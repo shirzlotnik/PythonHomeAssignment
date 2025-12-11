@@ -23,7 +23,7 @@ class Order(BaseModel):
     items: List[Item]
 
     @field_validator("payment_status")
-    def valid_payment_status(self, payment_status: str) -> str:
+    def validate_payment_status(self, payment_status: str) -> str:
         if payment_status not in VALID_PAYMENT_STATUSES:
             raise ValueError(f"Invalid payment status: {payment_status}")
         return payment_status

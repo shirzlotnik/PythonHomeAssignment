@@ -12,7 +12,7 @@ class PaymentMethod(BaseModel):
     provider: str
 
     @field_validator("type")
-    def valid_type(self, payment_type: str) -> str:
+    def validate_type(self, payment_type: str) -> str:
         if payment_type not in VALID_PAYMENT_TYPES:
             raise ValueError(f"Invalid transaction status: {payment_type}")
         return payment_type
@@ -29,7 +29,7 @@ class Transaction(BaseModel):
     error_code: Optional[str]
 
     @field_validator("status")
-    def valid_status(self, status: str) -> str:
+    def validate_status(self, status: str) -> str:
         if status not in VALID_STATUSES:
             raise ValueError(f"Invalid transaction status: {status}")
         return status
