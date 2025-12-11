@@ -31,7 +31,7 @@ class Transaction(BaseModel):
     currency: Annotated[str, AfterValidator(validate_currency)]
     status: Annotated[str, AfterValidator(validate_status)]
     payment_method: PaymentMethod
-    error_code: Optional[str]
+    error_code: Optional[str] = None
 
 
 

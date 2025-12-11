@@ -1,7 +1,7 @@
 import pandas as pd
 # from models.chargeback import Chargeback
 # from models.order import Order
-from models.transaction import Transaction
+from models.transaction import Transaction, PaymentMethod
 from pandantic import Pandantic
 
 from utils.files_handler import get_transactions_orders_chargebacks
@@ -25,10 +25,14 @@ def validate_transactions_total_amount_by_order_id(validated_transactions_df, va
     return
 
 
-def validate(transactions: pd.DataFrame, orders: pd.DataFrame,
-             chargebacks: pd.DataFrame):
+def validate(transactions, orders,
+             chargebacks):
     # transaction_validator = Pandantic(Transaction)
-    validated_transactions = [Transaction(**row) for row in transactions.to_dict(orient='records')]
+    # validated_transactions = [Transaction() for row in transactions.to_dict(orient='records')]
+
+    trs = []
+    for tr in transactions:
+        trs.append(Transaction(**tr))
 
     # order_validator = Pandantic(Order)
     # chargeback_validator = Pandantic(Chargeback)

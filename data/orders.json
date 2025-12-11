@@ -1,4 +1,4 @@
-{
+[{
     "order_id": "123",
     "customer_id": "shir1",
     "timestamp": "2025-12-01 12:50:00",
@@ -12,4 +12,4 @@
         }
     ],
     "payment_status": "paid"
-}
+}]

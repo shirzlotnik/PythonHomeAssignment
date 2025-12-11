@@ -10,6 +10,6 @@ def validate_currency(currency: str) -> str:
 
 
 def validate_timestamp_range(timestamp) -> str:
-    if timestamp > datetime.now():
+    if datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") > datetime.now():
         raise ValueError(f"Invalid transaction timestamp, in the future: {timestamp}")
-    return timestamp.strftime("%Y-%m-%d %H:%M:%S")
+    return timestamp
