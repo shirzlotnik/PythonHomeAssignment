@@ -1,0 +1,15 @@
+{
+    "order_id": "123",
+    "customer_id": "shir1",
+    "timestamp": "2025-12-01 12:50:00",
+    "total_amount": 12,
+    "currency": "string",
+    "items": [
+        {
+            "product_id": "popcorn",
+            "quantity": 2,
+            "unit_price": 6.0
+        }
+    ],
+    "payment_status": "paid"
+}

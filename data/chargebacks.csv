@@ -1,0 +1,2 @@
+transaction_id,dispute_date,amount,reason_code,status,resolution_date
+abc,2025-12-01 12:50:00,12,5,success,2025-12-01 12:55:00

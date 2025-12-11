@@ -1,6 +1,6 @@
 import pandas as pd
-from models.chargeback import Chargeback
-from models.order import Order
+# from models.chargeback import Chargeback
+# from models.order import Order
 from models.transaction import Transaction
 from pandantic import Pandantic
 
@@ -27,15 +27,17 @@ def validate_transactions_total_amount_by_order_id(validated_transactions_df, va
 
 def validate(transactions: pd.DataFrame, orders: pd.DataFrame,
              chargebacks: pd.DataFrame):
-    transaction_validator = Pandantic(Transaction)
-    order_validator = Pandantic(Order)
-    chargeback_validator = Pandantic(Chargeback)
+    # transaction_validator = Pandantic(Transaction)
+    validated_transactions = [Transaction(**row) for row in transactions.to_dict(orient='records')]
 
-    validated_transactions_df: pd.DataFrame = transaction_validator.validate(transactions)
-    validated_orders_df: pd.DataFrame = order_validator.validate(orders)
-    validated_chargebacks_df: pd.DataFrame = chargeback_validator.validate(chargebacks)
+    # order_validator = Pandantic(Order)
+    # chargeback_validator = Pandantic(Chargeback)
 
-    validate_transactions_total_amount_by_order_id(validated_transactions_df, validated_orders_df)
+    # validated_transactions_df: pd.DataFrame = transaction_validator.validate(transactions)
+    # validated_orders_df: pd.DataFrame = order_validator.validate(orders)
+    # validated_chargebacks_df: pd.DataFrame = chargeback_validator.validate(chargebacks)
+
+    # validate_transactions_total_amount_by_order_id(validated_transactions_df, validated_orders_df)
 
     return
 
@@ -104,4 +106,4 @@ def run_pipeline():
 
 
 if __name__ == '__main__':
-    print('Init')
+    run_pipeline()
