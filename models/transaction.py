@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator, Field, WrapValidator
 from typing import Optional, Annotated
 from pydantic.v1.class_validators import Validator
-from models.commons import validate_timestamp_range
+from models.commons import validate_timestamp_range, validate_currency
 
 VALID_STATUSES = ["completed", "failed", "pending"]
 VALID_PAYMENT_TYPES = ["credit_card", "debit_card", "wallet"]
@@ -23,7 +23,7 @@ class Transaction(BaseModel):
     order_id: str
     timestamp: Annotated[str, Validator(validate_timestamp_range)]
     amount: float = Field(..., ge=0)
-    currency: str
+    currency: Annotated[str, Validator(validate_currency)]
     status: str
     payment_method: PaymentMethod
     error_code: Optional[str]
